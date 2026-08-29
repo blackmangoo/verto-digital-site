@@ -33,37 +33,41 @@ export default function WhyVerto() {
   const ref = useScrollReveal<HTMLElement>({ stagger: 0.15 });
 
   return (
-    <section ref={ref} id="about" className="py-32 lg:py-40">
-      <div className="mx-auto max-w-5xl px-6 lg:px-12">
-        <div className="mb-20" data-reveal>
-          <span className="text-xs tracking-[0.3em] uppercase text-warm-grey">
+    <section ref={ref} id="about" className="py-32 lg:py-48">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-16">
+        <div className="max-w-3xl">
+          <span className="eyebrow block mb-5" data-reveal>
             Why Us
           </span>
-          <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.15] text-charcoal">
+          <h2
+            className="headline text-[clamp(28px,4vw,48px)] text-ink mb-20 lg:mb-28"
+            data-reveal
+          >
             Not bigger. Better.
           </h2>
-        </div>
 
-        <div className="space-y-16 lg:space-y-20">
-          {differentiators.map((item) => (
-            <div
-              key={item.number}
-              data-reveal
-              className="grid grid-cols-1 lg:grid-cols-[80px_1fr] gap-4 lg:gap-8"
-            >
-              <span className="text-5xl lg:text-6xl font-serif text-cream-dark">
-                {item.number}
-              </span>
-              <div>
-                <h3 className="text-xl lg:text-2xl font-medium tracking-tight text-charcoal mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-warm-grey leading-relaxed max-w-lg">
-                  {item.description}
-                </p>
+          <div className="space-y-20 lg:space-y-24">
+            {differentiators.map((item) => (
+              <div
+                key={item.number}
+                data-reveal
+                className="relative pl-20 lg:pl-28"
+              >
+                {/* Watermark number */}
+                <span className="absolute left-0 top-0 text-[64px] lg:text-[80px] font-serif leading-none text-stone-dark select-none">
+                  {item.number}
+                </span>
+                <div>
+                  <h3 className="text-[20px] lg:text-[24px] font-medium tracking-tight text-ink mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-[15px] text-grey leading-[1.75] max-w-lg">
+                    {item.description}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

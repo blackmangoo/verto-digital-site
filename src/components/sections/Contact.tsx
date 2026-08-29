@@ -1,53 +1,68 @@
 "use client";
 
 import { useScrollReveal } from "@/lib/useScrollReveal";
-import { ArrowUpRight } from "lucide-react";
+import { useMagneticHover } from "@/lib/useMagneticHover";
 
 export default function Contact() {
   const ref = useScrollReveal<HTMLElement>();
+  const whatsappRef = useMagneticHover<HTMLAnchorElement>(0.25);
+  const emailRef = useMagneticHover<HTMLAnchorElement>(0.25);
 
   return (
-    <section ref={ref} id="contact" className="py-32 lg:py-40">
-      <div className="mx-auto max-w-4xl px-6 lg:px-12 text-center">
-        <div data-reveal>
-          <span className="text-xs tracking-[0.3em] uppercase text-warm-grey">
-            Get in Touch
-          </span>
+    <section ref={ref} id="contact" className="py-32 lg:py-48">
+      {/* Top umber line */}
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-16">
+        <div className="h-px bg-umber/30 mb-20 lg:mb-28" data-reveal />
 
-          <h2 className="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.1] text-charcoal">
-            Ready to start?
-          </h2>
+        <div
+          className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-16 lg:gap-24 items-start"
+          data-reveal
+        >
+          {/* Left: Headline */}
+          <div>
+            <h2 className="headline text-[clamp(36px,5vw,64px)] text-ink">
+              Ready to start?
+            </h2>
+            <p className="mt-6 text-[15px] text-grey leading-[1.75] max-w-md">
+              We&rsquo;ll audit your current setup and show you a demo &mdash;
+              no commitment, no pressure. Just a clear picture of
+              what&rsquo;s possible.
+            </p>
+          </div>
 
-          <p className="mt-6 text-lg text-warm-grey max-w-xl mx-auto leading-relaxed">
-            We&rsquo;ll audit your current setup and show you a demo &mdash;
-            no commitment, no pressure. Just a clear picture of what&rsquo;s possible.
-          </p>
-        </div>
+          {/* Right: CTAs stacked */}
+          <div className="flex flex-col gap-4 lg:items-end">
+            <a
+              ref={whatsappRef}
+              href="https://wa.me/923000000000"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 bg-ink text-stone px-8 py-4 text-[13px] tracking-[0.12em] uppercase hover:bg-night-light transition-colors duration-300 w-fit"
+            >
+              Message on WhatsApp
+              <svg
+                className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M7 17L17 7M17 7H7M17 7v10"
+                />
+              </svg>
+            </a>
 
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4" data-reveal>
-          {/* WhatsApp CTA */}
-          <a
-            href="https://wa.me/923000000000"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 bg-charcoal text-cream px-8 py-4 text-sm tracking-wider uppercase hover:bg-charcoal-light transition-all duration-300"
-          >
-            Message on WhatsApp
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-          </a>
-
-          {/* Email CTA */}
-          <a
-            href="mailto:hello@vertodigital.tech"
-            className="inline-flex items-center gap-3 border border-charcoal/20 text-charcoal px-8 py-4 text-sm tracking-wider uppercase hover:border-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300"
-          >
-            Send an Email
-          </a>
-        </div>
-
-        {/* Decorative line */}
-        <div className="mt-20" data-reveal>
-          <div className="w-px h-16 bg-brass/30 mx-auto" />
+            <a
+              ref={emailRef}
+              href="mailto:hello@vertodigital.tech"
+              className="inline-flex items-center gap-3 border border-ink/15 text-ink px-8 py-4 text-[13px] tracking-[0.12em] uppercase hover:border-ink hover:bg-ink hover:text-stone transition-all duration-300 w-fit"
+            >
+              Send an Email
+            </a>
+          </div>
         </div>
       </div>
     </section>

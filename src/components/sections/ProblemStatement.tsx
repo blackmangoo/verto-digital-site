@@ -21,30 +21,34 @@ const problems = [
 ];
 
 export default function ProblemStatement() {
-  const ref = useScrollReveal<HTMLElement>({ stagger: 0.2, y: 50 });
+  const ref = useScrollReveal<HTMLElement>({ stagger: 0.2, y: 40 });
 
   return (
-    <section ref={ref} className="py-32 lg:py-40">
-      <div className="mx-auto max-w-5xl px-6 lg:px-12">
-        <div className="mb-16" data-reveal>
-          <span className="text-xs tracking-[0.3em] uppercase text-warm-grey">
+    <section ref={ref} className="py-32 lg:py-48">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-16">
+        <div className="max-w-3xl">
+          <span className="eyebrow block mb-16" data-reveal>
             The Problem
           </span>
-        </div>
 
-        <div className="space-y-16 lg:space-y-20">
-          {problems.map((item) => (
-            <div key={item.number} className="flex items-start gap-6 lg:gap-10" data-reveal>
-              <span className="text-sm text-brass font-medium mt-2 shrink-0">
-                {item.number}
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.15] text-charcoal">
-                {item.statement}
-                <br />
-                <span className="text-warm-grey">{item.emphasis}</span>
-              </h2>
-            </div>
-          ))}
+          <div className="space-y-20 lg:space-y-24">
+            {problems.map((item) => (
+              <div
+                key={item.number}
+                className="flex items-start gap-6 lg:gap-10"
+                data-reveal
+              >
+                <span className="text-[13px] text-umber font-medium mt-3 shrink-0">
+                  {item.number}
+                </span>
+                <h2 className="headline text-[clamp(28px,4vw,48px)] text-ink">
+                  {item.statement}
+                  <br />
+                  <span className="text-grey">{item.emphasis}</span>
+                </h2>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

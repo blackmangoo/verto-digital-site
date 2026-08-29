@@ -6,26 +6,21 @@ export default function SampleWork() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={ref} className="py-32 lg:py-40 bg-cream-dark/50">
-      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+    <section ref={ref} className="py-32 lg:py-40">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-16">
         <div className="mb-20" data-reveal>
-          <span className="text-xs tracking-[0.3em] uppercase text-warm-grey">
-            Our Work
-          </span>
-          <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.15] text-charcoal">
+          <span className="eyebrow block mb-5">Our Work</span>
+          <h2 className="headline text-[clamp(28px,4vw,48px)] text-ink">
             Selected projects.
           </h2>
         </div>
 
         {/* Empty state */}
-        <div
-          data-reveal
-          className="border border-dashed border-warm-grey-light/50 rounded-sm p-16 lg:p-24 text-center"
-        >
-          <p className="text-warm-grey text-sm tracking-wide">
+        <div data-reveal className="py-20 text-center">
+          <p className="text-grey text-[15px]">
             Projects will be showcased here as we complete them.
           </p>
-          <p className="mt-2 text-warm-grey-light text-xs tracking-wider uppercase">
+          <p className="mt-2 eyebrow text-grey-light">
             Coming Soon
           </p>
         </div>

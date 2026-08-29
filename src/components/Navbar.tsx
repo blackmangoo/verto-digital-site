@@ -15,9 +15,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -25,9 +23,7 @@ export default function Navbar() {
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
     const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -35,11 +31,11 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-cream/90 backdrop-blur-md shadow-[0_1px_0_rgba(26,26,26,0.06)]"
+            ? "bg-stone/90 backdrop-blur-md shadow-[0_1px_0_rgba(17,17,17,0.05)]"
             : "bg-transparent"
         }`}
       >
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-16">
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
             <a
@@ -48,9 +44,9 @@ export default function Navbar() {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="text-lg font-medium tracking-[0.2em] uppercase text-charcoal"
+              className="text-[13px] font-medium tracking-[0.2em] uppercase text-ink"
             >
-              Verto<span className="text-brass">.</span>
+              Verto<span className="text-umber">.</span> Digital
             </a>
 
             {/* Desktop Nav */}
@@ -59,14 +55,14 @@ export default function Navbar() {
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-sm tracking-wider uppercase text-warm-grey hover:text-charcoal transition-colors duration-300"
+                  className="nav-link text-[13px] tracking-[0.12em] uppercase text-grey hover:text-ink transition-colors duration-300"
                 >
                   {link.label}
                 </button>
               ))}
               <button
                 onClick={() => handleNavClick("#contact")}
-                className="text-sm tracking-wider uppercase bg-charcoal text-cream px-6 py-2.5 hover:bg-charcoal-light transition-colors duration-300"
+                className="text-[13px] tracking-[0.12em] uppercase bg-ink text-stone px-6 py-2.5 hover:bg-night-light transition-colors duration-300"
               >
                 Start a Conversation
               </button>
@@ -79,24 +75,16 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               <motion.span
-                animate={
-                  menuOpen
-                    ? { rotate: 45, y: 5 }
-                    : { rotate: 0, y: 0 }
-                }
-                className="block w-6 h-[1.5px] bg-charcoal origin-center"
+                animate={menuOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
+                className="block w-6 h-[1.5px] bg-ink origin-center"
               />
               <motion.span
                 animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-                className="block w-6 h-[1.5px] bg-charcoal"
+                className="block w-6 h-[1.5px] bg-ink"
               />
               <motion.span
-                animate={
-                  menuOpen
-                    ? { rotate: -45, y: -5 }
-                    : { rotate: 0, y: 0 }
-                }
-                className="block w-6 h-[1.5px] bg-charcoal origin-center"
+                animate={menuOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
+                className="block w-6 h-[1.5px] bg-ink origin-center"
               />
             </button>
           </div>
@@ -111,7 +99,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-cream flex items-center justify-center"
+            className="fixed inset-0 z-40 bg-stone flex items-center justify-center"
           >
             <div className="flex flex-col items-center gap-8">
               {navLinks.map((link, i) => (
@@ -120,9 +108,9 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
-                  transition={{ delay: i * 0.1, duration: 0.4 }}
+                  transition={{ delay: i * 0.08, duration: 0.4 }}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-3xl font-serif tracking-wide text-charcoal hover:text-brass transition-colors duration-300"
+                  className="text-3xl font-serif tracking-tight text-ink hover:text-umber transition-colors duration-300"
                 >
                   {link.label}
                 </motion.button>
@@ -131,9 +119,9 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                transition={{ delay: 0.4, duration: 0.4 }}
+                transition={{ delay: 0.35, duration: 0.4 }}
                 onClick={() => handleNavClick("#contact")}
-                className="mt-4 text-sm tracking-wider uppercase bg-charcoal text-cream px-8 py-3 hover:bg-charcoal-light transition-colors duration-300"
+                className="mt-4 text-[13px] tracking-[0.12em] uppercase bg-ink text-stone px-8 py-3"
               >
                 Start a Conversation
               </motion.button>

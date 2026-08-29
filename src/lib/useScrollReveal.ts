@@ -17,11 +17,11 @@ export function useScrollReveal<T extends HTMLElement>(
 ) {
   const ref = useRef<T>(null);
   const {
-    y = 40,
+    y = 30,
     opacity = 0,
-    duration = 0.8,
+    duration = 0.9,
     delay = 0,
-    stagger = 0.15,
+    stagger = 0.12,
     start = "top 85%",
   } = options;
 
