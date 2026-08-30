@@ -67,6 +67,37 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </SmoothScrollProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "Verto Digital",
+              "url": "https://vertodigital.tech",
+              "description": "Premium websites and AI automation for local businesses in Pakistan",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Lahore",
+                "addressCountry": "PK"
+              },
+              "founder": {
+                "@type": "Person",
+                "name": "Ammar Akbar"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Pakistan"
+              },
+              "serviceType": [
+                "Web Development",
+                "AI Automation",
+                "WhatsApp Business Automation",
+                "Business Process Automation"
+              ]
+            })
+          }}
+        />
       </body>
     </html>
   );

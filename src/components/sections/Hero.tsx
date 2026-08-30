@@ -254,7 +254,7 @@ export default function Hero() {
         {/* Scroll indicator */}
         {isLoaded && (
           <div className="absolute bottom-8 lg:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10 opacity-0 gsap-scroll-indicator pointer-events-none">
-            <span className="text-[11px] font-medium tracking-[0.35em] uppercase text-grey">
+            <span className="text-[11px] font-bold tracking-[0.35em] uppercase text-ink drop-shadow-sm bg-stone/50 px-3 py-1 rounded-full backdrop-blur-sm">
               Scroll
             </span>
             <div className="w-px h-16 relative overflow-hidden flex flex-col justify-start">
