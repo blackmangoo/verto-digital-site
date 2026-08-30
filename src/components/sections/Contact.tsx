@@ -8,20 +8,6 @@ export default function Contact() {
   const ref = useScrollReveal<HTMLElement>();
   const submitBtnRef = useMagneticHover<HTMLButtonElement>(0.15);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get("name") as string;
-    const business = formData.get("business") as string;
-    const email = formData.get("email") as string;
-    const details = formData.get("details") as string;
-
-    const subject = encodeURIComponent(`New Inquiry from ${name} - ${business}`);
-    const body = encodeURIComponent(`Name: ${name}\nBusiness Name: ${business}\nEmail: ${email}\n\nProject Details:\n${details}`);
-    
-    window.location.href = `mailto:ammar.akbar2002@gmail.com?subject=${subject}&body=${body}`;
-  };
-
   return (
     <section ref={ref} id="contact" className="py-32 lg:py-48">
       {/* Top umber line */}
@@ -50,7 +36,16 @@ export default function Contact() {
           </div>
 
           {/* Right: Contact Form */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-8 w-full max-w-2xl lg:ml-auto">
+          <form 
+            action="https://formsubmit.co/ammar.akbar2002@gmail.com" 
+            method="POST" 
+            className="flex flex-col gap-8 w-full max-w-2xl lg:ml-auto"
+          >
+            {/* FormSubmit Config */}
+            <input type="hidden" name="_subject" value="New Inquiry from Verto Digital Website!" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-[13px] tracking-wide uppercase text-grey font-medium">Your Name</label>
@@ -58,7 +53,7 @@ export default function Contact() {
               </div>
               <div className="flex flex-col gap-2">
                 <label htmlFor="business" className="text-[13px] tracking-wide uppercase text-grey font-medium">Business Name</label>
-                <input required type="text" id="business" name="business" className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30" placeholder="Acme Corp" />
+                <input required type="text" id="business" name="Business Name" className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30" placeholder="Acme Corp" />
               </div>
             </div>
             
@@ -69,7 +64,7 @@ export default function Contact() {
 
             <div className="flex flex-col gap-2">
               <label htmlFor="details" className="text-[13px] tracking-wide uppercase text-grey font-medium">Project Details</label>
-              <textarea required id="details" name="details" rows={4} className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30 resize-none" placeholder="Tell us about your business and what you're looking to build..." />
+              <textarea required id="details" name="Project Details" rows={4} className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30 resize-none" placeholder="Tell us about your business and what you're looking to build..." />
             </div>
 
             <button

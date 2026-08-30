@@ -94,6 +94,23 @@ export default function Hero() {
         });
       }
 
+      // Scroll indicator reveal and loop
+      gsap.to(".gsap-scroll-indicator", {
+        opacity: 1,
+        duration: 1,
+        delay: 1,
+      });
+      gsap.fromTo(
+        ".scroll-line",
+        { yPercent: -100 },
+        {
+          yPercent: 200,
+          duration: 1.5,
+          ease: "circ.inOut",
+          repeat: -1,
+        }
+      );
+
       // Reduced motion: just show last frame with fade
       if (reducedMotion.current) {
         renderFrame(TOTAL_FRAMES - 1);
@@ -234,12 +251,12 @@ export default function Hero() {
 
         {/* Scroll indicator */}
         {isLoaded && (
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-grey-light">
+          <div className="absolute bottom-8 lg:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10 opacity-0 gsap-scroll-indicator pointer-events-none">
+            <span className="text-[11px] font-medium tracking-[0.35em] uppercase text-grey">
               Scroll
             </span>
-            <div className="w-px h-8 bg-stone-dark relative overflow-hidden">
-              <div className="absolute inset-x-0 top-0 h-full bg-umber animate-pulse" />
+            <div className="w-px h-16 relative overflow-hidden flex flex-col justify-start">
+              <div className="scroll-line absolute top-0 left-0 w-full h-1/2 bg-umber" />
             </div>
           </div>
         )}
