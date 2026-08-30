@@ -6,7 +6,7 @@ export default function FoundersNote() {
   const ref = useScrollReveal<HTMLElement>({ stagger: 0.2 });
 
   return (
-    <section ref={ref} className="bg-night text-stone py-32 lg:py-48">
+    <section ref={ref} id="about" className="bg-night text-stone py-32 lg:py-48">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24">
           {/* Left: Quote */}

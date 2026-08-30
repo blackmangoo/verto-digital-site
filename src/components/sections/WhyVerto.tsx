@@ -33,7 +33,7 @@ export default function WhyVerto() {
   const ref = useScrollReveal<HTMLElement>({ stagger: 0.15 });
 
   return (
-    <section ref={ref} id="about" className="py-32 lg:py-48">
+    <section ref={ref} className="py-32 lg:py-48">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-16">
         <div className="max-w-3xl">
           <span className="eyebrow block mb-5" data-reveal>
