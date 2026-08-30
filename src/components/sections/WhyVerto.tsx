@@ -17,15 +17,15 @@ const differentiators = [
   },
   {
     number: "03",
-    title: "We don\u2019t disappear after launch.",
+    title: "Month two matters more than month one.",
     description:
-      "Most agencies ship and move on. We stay \u2014 monitoring, optimising, and picking up the phone when something needs fixing.",
+      "Anyone can launch a site. We stick around for the part most agencies skip \u2014 monitoring, optimising, and picking up the phone when something breaks at 11pm.",
   },
   {
     number: "04",
-    title: "This site is the proof.",
+    title: "Built for Pakistan, not imported.",
     description:
-      "We use the same tools, standards, and attention to detail on our own site that we bring to yours. No shortcuts.",
+      "We understand local business because we are one. Lahore traffic, load-shedding uptime, WhatsApp-first customers \u2014 we build for the real conditions, not a Silicon Valley playbook.",
   },
 ];
 
@@ -43,7 +43,7 @@ export default function WhyVerto() {
             className="headline text-[clamp(28px,4vw,48px)] text-ink mb-20 lg:mb-28"
             data-reveal
           >
-            Not bigger. Better.
+            Small team. No excuses.
           </h2>
 
           <div className="space-y-20 lg:space-y-24">

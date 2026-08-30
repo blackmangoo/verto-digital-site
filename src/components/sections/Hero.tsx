@@ -94,7 +94,14 @@ export default function Hero() {
         });
       }
 
-      // Scroll indicator reveal and loop
+      // Reduced motion: just show last frame, show static scroll indicator
+      if (reducedMotion.current) {
+        renderFrame(TOTAL_FRAMES - 1);
+        gsap.to(".gsap-scroll-indicator", { opacity: 1, duration: 0 });
+        return;
+      }
+
+      // Scroll indicator reveal and loop (only for non-reduced-motion)
       gsap.to(".gsap-scroll-indicator", {
         opacity: 1,
         duration: 1,
@@ -108,14 +115,9 @@ export default function Hero() {
           duration: 1.5,
           ease: "circ.inOut",
           repeat: -1,
+          repeatDelay: 0.3,
         }
       );
-
-      // Reduced motion: just show last frame with fade
-      if (reducedMotion.current) {
-        renderFrame(TOTAL_FRAMES - 1);
-        return;
-      }
 
       // Scroll-scrub through frames
       ScrollTrigger.create({
@@ -153,7 +155,7 @@ export default function Hero() {
     return () => ctx.revert();
   }, [isLoaded, renderFrame]);
 
-  const headingText = "Precision online. Finally.";
+  const headingText = "Your business, online properly.";
   const words = headingText.split(" ");
 
   const handleCTA = () => {
@@ -220,8 +222,8 @@ export default function Hero() {
                   </h1>
 
                   <p className="mt-5 text-[15px] text-grey leading-[1.75]">
-                    We build websites and AI automation for local businesses
-                    that take their craft seriously.
+                    We build websites and AI automation for businesses that
+                    are excellent in person — and deserve to be excellent online.
                   </p>
 
                   <button

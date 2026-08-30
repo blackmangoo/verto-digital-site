@@ -38,7 +38,7 @@ const steps = [
     number: "06",
     title: "Support",
     description:
-      "We don\u2019t disappear. Ongoing tweaks, monitoring, and a direct line when you need us.",
+      "Post-launch isn\u2019t an afterthought. Ongoing tweaks, uptime monitoring, and a direct line \u2014 not a ticket queue \u2014 when you need us.",
   },
 ];
 

@@ -60,7 +60,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Verto Digital. All rights reserved.
           </p>
           <p className="text-[11px] text-grey tracking-wide">
-            Demo design by Verto Digital
+            Designed &amp; built by Verto Digital
           </p>
         </div>
       </div>

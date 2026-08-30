@@ -2,7 +2,6 @@
 
 import { useScrollReveal } from "@/lib/useScrollReveal";
 import { useMagneticHover } from "@/lib/useMagneticHover";
-import { FormEvent } from "react";
 
 export default function Contact() {
   const ref = useScrollReveal<HTMLElement>();
@@ -49,22 +48,22 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-[13px] tracking-wide uppercase text-grey font-medium">Your Name</label>
-                <input required type="text" id="name" name="name" className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30" placeholder="John Doe" />
+                <input required type="text" id="name" name="name" className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30" placeholder="Ali Hassan" />
               </div>
               <div className="flex flex-col gap-2">
                 <label htmlFor="business" className="text-[13px] tracking-wide uppercase text-grey font-medium">Business Name</label>
-                <input required type="text" id="business" name="Business Name" className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30" placeholder="Acme Corp" />
+                <input required type="text" id="business" name="Business Name" className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30" placeholder="Hassan Auto Workshop" />
               </div>
             </div>
             
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="text-[13px] tracking-wide uppercase text-grey font-medium">Email Address</label>
-              <input required type="email" id="email" name="email" className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30" placeholder="john@example.com" />
+              <input required type="email" id="email" name="email" className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30" placeholder="ali@example.com" />
             </div>
 
             <div className="flex flex-col gap-2">
               <label htmlFor="details" className="text-[13px] tracking-wide uppercase text-grey font-medium">Project Details</label>
-              <textarea required id="details" name="Project Details" rows={4} className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30 resize-none" placeholder="Tell us about your business and what you're looking to build..." />
+              <textarea required id="details" name="Project Details" rows={4} className="border-b border-ink/20 bg-transparent py-3 focus:outline-none focus:border-umber transition-colors text-ink placeholder:text-ink/30 resize-none" placeholder="What does your business do, and what's not working online right now?" />
             </div>
 
             <button
