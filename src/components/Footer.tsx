@@ -6,9 +6,9 @@ export default function Footer() {
           {/* Brand — takes more space */}
           <div className="max-w-sm">
             <img 
-              src="/assets/verto-logo-light.jpg" 
+              src="/assets/verto-logo-transparent-white.png" 
               alt="Verto Digital" 
-              className="h-14 w-auto object-contain mb-4 -ml-2 filter invert mix-blend-screen opacity-90"
+              className="h-14 w-auto object-contain mb-4 -ml-2 opacity-90"
             />
             <p className="mt-5 text-[15px] text-grey leading-relaxed">
               Premium websites and practical AI automation for local businesses

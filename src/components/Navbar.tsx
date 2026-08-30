@@ -47,9 +47,9 @@ export default function Navbar() {
               className="flex items-center"
             >
               <img 
-                src="/assets/verto-logo-light.jpg" 
+                src="/assets/verto-logo-transparent.png" 
                 alt="Verto Digital" 
-                className="h-10 w-auto object-contain mix-blend-multiply"
+                className="h-10 w-auto object-contain"
               />
             </a>
 
