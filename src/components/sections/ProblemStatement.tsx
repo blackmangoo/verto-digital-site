@@ -38,10 +38,10 @@ export default function ProblemStatement() {
                 className="flex items-start gap-6 lg:gap-10"
                 data-reveal
               >
-                <span className="text-[13px] text-umber font-medium mt-3 shrink-0">
+                <span className="text-[14px] text-umber font-medium mt-4 shrink-0">
                   {item.number}
                 </span>
-                <h2 className="headline text-[clamp(28px,4vw,48px)] text-ink">
+                <h2 className="headline text-[clamp(40px,6vw,80px)] leading-[1.1] text-ink">
                   {item.statement}
                   <br />
                   <span className="text-grey">{item.emphasis}</span>

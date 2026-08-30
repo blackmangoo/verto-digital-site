@@ -10,8 +10,9 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.08,
+      lerp: 0.15,
       smoothWheel: true,
+      wheelMultiplier: 1.2,
     });
 
     lenisRef.current = lenis;

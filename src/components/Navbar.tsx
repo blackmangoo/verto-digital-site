@@ -44,9 +44,13 @@ export default function Navbar() {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="text-[13px] font-medium tracking-[0.2em] uppercase text-ink"
+              className="flex items-center"
             >
-              Verto<span className="text-umber">.</span> Digital
+              <img 
+                src="/assets/verto-logo-light.png" 
+                alt="Verto Digital" 
+                className="h-10 w-auto object-contain"
+              />
             </a>
 
             {/* Desktop Nav */}
@@ -60,12 +64,14 @@ export default function Navbar() {
                   {link.label}
                 </button>
               ))}
-              <button
-                onClick={() => handleNavClick("#contact")}
+              <a
+                href="https://wa.me/923214797778"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[13px] tracking-[0.12em] uppercase bg-ink text-stone px-6 py-2.5 hover:bg-night-light transition-colors duration-300"
               >
                 Start a Conversation
-              </button>
+              </a>
             </div>
 
             {/* Mobile Menu Toggle */}

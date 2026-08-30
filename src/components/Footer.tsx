@@ -5,9 +5,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-16 md:gap-20">
           {/* Brand — takes more space */}
           <div className="max-w-sm">
-            <p className="text-[13px] font-medium tracking-[0.2em] uppercase">
-              Verto<span className="text-umber">.</span> Digital
-            </p>
+            <img 
+              src="/assets/verto-logo-dark.png" 
+              alt="Verto Digital" 
+              className="h-14 w-auto object-contain mb-4 -ml-2"
+            />
             <p className="mt-5 text-[15px] text-grey leading-relaxed">
               Premium websites and practical AI automation for local businesses
               that take their craft seriously.
@@ -41,7 +43,7 @@ export default function Footer() {
                 hello@vertodigital.tech
               </a>
               <a
-                href="https://wa.me/923000000000"
+                href="https://wa.me/923214797778"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[15px] text-grey-light hover:text-stone transition-colors duration-300"

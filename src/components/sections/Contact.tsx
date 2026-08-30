@@ -34,10 +34,10 @@ export default function Contact() {
           <div className="flex flex-col gap-4 lg:items-end">
             <a
               ref={whatsappRef}
-              href="https://wa.me/923000000000"
+              href="https://wa.me/923214797778"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 bg-ink text-stone px-8 py-4 text-[13px] tracking-[0.12em] uppercase hover:bg-night-light transition-colors duration-300 w-fit"
+              className="inline-block px-10 py-5 bg-ink text-stone text-[13px] font-medium tracking-[0.2em] uppercase transition-colors hover:bg-umber magnetic-button"
             >
               Message on WhatsApp
               <svg

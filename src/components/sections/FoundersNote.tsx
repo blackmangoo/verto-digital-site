@@ -43,16 +43,13 @@ export default function FoundersNote() {
 
           {/* Right: Photo + Identity (offset lower) */}
           <div className="lg:mt-20" data-reveal>
-            {/* Photo placeholder */}
-            <div className="aspect-[3/4] bg-night-light border border-white/[0.04] flex items-center justify-center max-w-sm">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/[0.04] flex items-center justify-center">
-                  <span className="text-[28px] font-serif text-umber">V</span>
-                </div>
-                <p className="text-[11px] text-grey tracking-[0.2em] uppercase">
-                  Photo Coming Soon
-                </p>
-              </div>
+            {/* Photo */}
+            <div className="aspect-[3/4] max-w-sm overflow-hidden bg-night-light border border-white/[0.04]">
+              <img 
+                src="/assets/ammar-akbar-founder.jpg" 
+                alt="Ammar Akbar, Founder of Verto Digital"
+                className="w-full h-full object-cover mix-blend-luminosity hover:mix-blend-normal transition-all duration-700 grayscale hover:grayscale-0 cursor-pointer"
+              />
             </div>
 
             <div className="mt-8">
