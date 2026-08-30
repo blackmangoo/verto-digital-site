@@ -37,10 +37,10 @@ export default function Footer() {
             <p className="eyebrow-light mb-5">Get in Touch</p>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:hello@vertodigital.tech"
+                href="mailto:ammar.akbar2002@gmail.com"
                 className="text-[15px] text-grey-light hover:text-stone transition-colors duration-300"
               >
-                hello@vertodigital.tech
+                ammar.akbar2002@gmail.com
               </a>
               <a
                 href="https://wa.me/923214797778"
