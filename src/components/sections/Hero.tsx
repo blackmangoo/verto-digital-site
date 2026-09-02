@@ -108,14 +108,15 @@ export default function Hero() {
         delay: 1,
       });
       gsap.fromTo(
-        ".scroll-line",
-        { yPercent: -100 },
+        ".scroll-wheel",
+        { y: 0, opacity: 1 },
         {
-          yPercent: 200,
+          y: 16,
+          opacity: 0,
           duration: 1.5,
-          ease: "circ.inOut",
+          ease: "power2.inOut",
           repeat: -1,
-          repeatDelay: 0.3,
+          repeatDelay: 0.1,
         }
       );
 
@@ -193,7 +194,7 @@ export default function Hero() {
         {/* Text overlay */}
         <div
           ref={overlayRef}
-          className="absolute inset-0 z-10 flex items-center pt-24 lg:pt-0"
+          className="absolute inset-x-0 bottom-0 top-20 z-10 flex items-center"
         >
           <div className="mx-auto max-w-[1400px] w-full px-6 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 items-center">
@@ -256,8 +257,8 @@ export default function Hero() {
             <span className="text-[11px] font-bold tracking-[0.35em] uppercase text-ink drop-shadow-sm bg-stone/50 px-3 py-1 rounded-full backdrop-blur-sm">
               Scroll
             </span>
-            <div className="w-px h-16 relative overflow-hidden flex flex-col justify-start">
-              <div className="scroll-line absolute top-0 left-0 w-full h-1/2 bg-umber" />
+            <div className="w-[26px] h-[40px] rounded-full border border-ink/30 flex justify-center pt-1.5 relative backdrop-blur-sm bg-stone/20">
+              <div className="scroll-wheel w-1 h-2 bg-umber rounded-full" />
             </div>
           </div>
         )}
