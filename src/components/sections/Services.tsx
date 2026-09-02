@@ -6,9 +6,9 @@ import { gsap, ScrollTrigger } from "@/lib/gsapConfig";
 const services = [
   {
     number: "01",
-    title: "Website Development",
+    title: "High-Conversion Websites",
     description:
-      "Sites that load fast, read well, and make the phone ring. Built with care, not from a template.",
+      "Sites that load fast, read well, and make the phone ring. We build premium digital storefronts that turn casual visitors into paying customers.",
   },
   {
     number: "02",
@@ -24,9 +24,9 @@ const services = [
   },
   {
     number: "04",
-    title: "Business Automation & Reporting",
+    title: "Online Ordering & Booking",
     description:
-      "Less paperwork, more clarity. Dashboards that tell you what\u2019s working and what needs attention.",
+      "Custom apps and portals for restaurants, clinics, and salons. Ditch the 30% commission fees from delivery apps and own your customer data directly.",
   },
 ];
 

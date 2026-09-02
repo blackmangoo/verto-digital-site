@@ -20,7 +20,7 @@ export default function Contact() {
           {/* Left: Headline */}
           <div>
             <h2 className="headline text-[clamp(36px,5vw,64px)] text-ink">
-              Ready to start?
+              Claim your free demo.
             </h2>
             <p className="mt-6 text-[15px] text-grey leading-[1.75] max-w-md">
               We&rsquo;ll audit your current setup and show you a demo &mdash;

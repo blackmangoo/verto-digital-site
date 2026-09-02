@@ -70,7 +70,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 className="text-[13px] tracking-[0.12em] uppercase bg-ink text-stone px-6 py-2.5 hover:bg-night-light transition-colors duration-300"
               >
-                Start a Conversation
+                Request a Custom Demo
               </a>
             </div>
 
@@ -129,7 +129,7 @@ export default function Navbar() {
                 onClick={() => handleNavClick("#contact")}
                 className="mt-4 text-[13px] tracking-[0.12em] uppercase bg-ink text-stone px-8 py-3"
               >
-                Start a Conversation
+                Request a Custom Demo
               </motion.button>
             </div>
           </motion.div>

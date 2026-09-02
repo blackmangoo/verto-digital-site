@@ -5,15 +5,15 @@ import { useScrollReveal } from "@/lib/useScrollReveal";
 const differentiators = [
   {
     number: "01",
-    title: "Fewer clients, better work.",
+    title: "We do the heavy lifting.",
     description:
-      "We take on a limited number of projects at a time. Every business we work with gets our full attention, not a junior on autopilot.",
+      "No technical headaches. We don't just hand you software and walk away. We build it, launch it, and manage it so you can focus entirely on running your business.",
   },
   {
     number: "02",
-    title: "Direct access to the people building.",
+    title: "Ready-to-launch solutions.",
     description:
-      "No account managers, no ticket queues. You talk to the people writing the code and designing the systems.",
+      "We don't deal in endless meetings and 6-month timelines. We build working, premium systems fast, so you can start getting customers online this week.",
   },
   {
     number: "03",
@@ -43,7 +43,7 @@ export default function WhyVerto() {
             className="headline text-[clamp(28px,4vw,48px)] text-ink mb-20 lg:mb-28"
             data-reveal
           >
-            Small team. No excuses.
+            Your digital growth partners.
           </h2>
 
           <div className="space-y-20 lg:space-y-24">

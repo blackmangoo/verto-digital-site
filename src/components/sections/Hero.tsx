@@ -155,7 +155,7 @@ export default function Hero() {
     return () => ctx.revert();
   }, [isLoaded, renderFrame]);
 
-  const headingText = "Your business, online properly.";
+  const headingText = "We build the digital systems local businesses need to grow.";
   const words = headingText.split(" ");
 
   const handleCTA = () => {
@@ -222,15 +222,14 @@ export default function Hero() {
                   </h1>
 
                   <p className="mt-5 text-[15px] text-grey leading-[1.75]">
-                    We build websites and AI automation for businesses that
-                    are excellent in person — and deserve to be excellent online.
+                    You run the business. We build your website, online ordering, appointment bookings, and automated follow-ups.
                   </p>
 
                   <button
                     onClick={handleCTA}
                     className="group mt-8 inline-flex items-center gap-3 bg-ink text-stone px-7 py-3.5 text-[13px] tracking-[0.12em] uppercase hover:bg-night-light transition-colors duration-300"
                   >
-                    Start a Conversation
+                    Request a Custom Demo
                     <svg
                       className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
                       fill="none"
