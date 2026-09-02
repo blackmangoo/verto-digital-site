@@ -54,7 +54,7 @@ export default function Navbar() {
             </a>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-10">
+            <div className="hidden lg:flex items-center gap-10">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
@@ -77,7 +77,7 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden relative z-50 w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+              className="lg:hidden relative z-50 w-8 h-8 flex flex-col items-center justify-center gap-1.5"
               aria-label="Toggle menu"
             >
               <motion.span
