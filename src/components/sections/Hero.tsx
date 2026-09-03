@@ -1,15 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsapConfig";
+
+const TOTAL_FRAMES = 192;
+const FRAME_PATH = "/assets/hero-frames/frame_";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const [loadProgress, setLoadProgress] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const framesRef = useRef<HTMLImageElement[]>([]);
+  const currentFrameRef = useRef(0);
   const reducedMotion = useRef(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
   // Check prefers-reduced-motion
   useEffect(() => {
@@ -18,8 +24,63 @@ export default function Hero() {
     ).matches;
   }, []);
 
-  // GSAP animations
+  // Preload all frames
+  const preloadFrames = useCallback(async () => {
+    const frames: HTMLImageElement[] = [];
+    let loaded = 0;
+
+    const promises = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
+      return new Promise<void>((resolve) => {
+        const img = new Image();
+        const num = String(i + 1).padStart(3, "0");
+        img.src = `${FRAME_PATH}${num}.webp`;
+        img.onload = () => {
+          frames[i] = img;
+          loaded++;
+          setLoadProgress(Math.round((loaded / TOTAL_FRAMES) * 100));
+          resolve();
+        };
+        img.onerror = () => {
+          loaded++;
+          setLoadProgress(Math.round((loaded / TOTAL_FRAMES) * 100));
+          resolve();
+        };
+      });
+    });
+
+    await Promise.all(promises);
+    framesRef.current = frames;
+    setIsLoaded(true);
+  }, []);
+
+  // Render frame to canvas
+  const renderFrame = useCallback((index: number) => {
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    const frame = framesRef.current[index];
+    if (!canvas || !ctx || !frame) return;
+
+    canvas.width = 1920;
+    canvas.height = 1080;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(frame, 0, 0, canvas.width, canvas.height);
+    currentFrameRef.current = index;
+  }, []);
+
+  // Init
   useEffect(() => {
+    preloadFrames();
+  }, [preloadFrames]);
+
+  // GSAP animations after load
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    // Draw first frame immediately
+    renderFrame(0);
+
     const ctx = gsap.context(() => {
       // Headline word reveal
       if (headingRef.current) {
@@ -35,13 +96,14 @@ export default function Hero() {
         });
       }
 
-      // Reduced motion fallback
+      // Reduced motion: just show last frame, show static scroll indicator
       if (reducedMotion.current) {
+        renderFrame(TOTAL_FRAMES - 1);
         gsap.to(".gsap-scroll-indicator", { opacity: 1, duration: 0 });
         return;
       }
 
-      // Scroll indicator reveal and loop
+      // Scroll indicator reveal and loop (only for non-reduced-motion)
       gsap.to(".gsap-scroll-indicator", {
         opacity: 1,
         duration: 1,
@@ -60,7 +122,24 @@ export default function Hero() {
         }
       );
 
-      // Fade out the text overlay as user scrolls down
+      // Scroll-scrub through frames
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.5,
+        onUpdate: (self) => {
+          const frameIndex = Math.min(
+            Math.floor(self.progress * (TOTAL_FRAMES - 1)),
+            TOTAL_FRAMES - 1
+          );
+          if (frameIndex !== currentFrameRef.current) {
+            renderFrame(frameIndex);
+          }
+        },
+      });
+
+      // Fade out the text overlay as user scrolls past 60%
       if (overlayRef.current) {
         gsap.to(overlayRef.current, {
           opacity: 0,
@@ -68,43 +147,16 @@ export default function Hero() {
           ease: "power2.in",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top top",
-            end: "bottom top",
+            start: "40% top",
+            end: "70% top",
             scrub: true,
-          },
-        });
-      }
-
-      // --- VIDEO SCRUBBING LOGIC ---
-      const video = videoRef.current;
-      if (video && videoLoaded && !reducedMotion.current) {
-        // Ensure video is paused so it doesn't auto-play
-        video.pause();
-        
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.5, // Smooth scrubbing
-          onUpdate: (self) => {
-            if (video.duration) {
-              video.currentTime = self.progress * video.duration;
-            }
           },
         });
       }
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [videoLoaded]);
-
-  // Handle cached video metadata
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video && video.readyState >= 1) {
-      setVideoLoaded(true);
-    }
-  }, []);
+  }, [isLoaded, renderFrame]);
 
   const headingText = "We build the digital systems local businesses need to grow.";
   const words = headingText.split(" ");
@@ -121,18 +173,23 @@ export default function Hero() {
       style={{ height: "250vh" }}
     >
       {/* Sticky container */}
-      <div className="sticky top-0 h-screen overflow-hidden bg-stone">
-        
-        {/* Native Video Background (Scrubbed via Scroll) */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-90">
-          <video
-            ref={videoRef}
-            playsInline
-            muted
-            preload="auto"
-            onLoadedMetadata={() => setVideoLoaded(true)}
+      <div className="sticky top-0 h-screen overflow-hidden">
+        {/* Loading bar */}
+        {!isLoaded && (
+          <div className="absolute top-0 left-0 right-0 z-30 h-[2px] bg-stone-dark">
+            <div
+              className="h-full bg-umber transition-all duration-200 ease-out origin-left"
+              style={{ width: `${loadProgress}%` }}
+            />
+          </div>
+        )}
+
+        {/* Canvas - animation */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <canvas
+            ref={canvasRef}
             className="w-full h-full object-cover"
-            src="/assets/hero-video-new.mp4"
+            style={{ maxWidth: "100%", maxHeight: "100%" }}
           />
         </div>
 
@@ -197,14 +254,16 @@ export default function Hero() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 lg:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10 opacity-0 gsap-scroll-indicator pointer-events-none">
-          <span className="text-[11px] font-bold tracking-[0.35em] uppercase text-ink drop-shadow-sm bg-stone/50 px-3 py-1 rounded-full backdrop-blur-sm">
-            Scroll
-          </span>
-          <div className="w-[26px] h-[40px] rounded-full border border-ink/30 flex justify-center pt-1.5 relative backdrop-blur-sm bg-stone/20">
-            <div className="scroll-wheel w-1 h-2 bg-umber rounded-full" />
+        {isLoaded && (
+          <div className="absolute bottom-8 lg:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10 opacity-0 gsap-scroll-indicator pointer-events-none">
+            <span className="text-[11px] font-bold tracking-[0.35em] uppercase text-ink drop-shadow-sm bg-stone/50 px-3 py-1 rounded-full backdrop-blur-sm">
+              Scroll
+            </span>
+            <div className="w-[26px] h-[40px] rounded-full border border-ink/30 flex justify-center pt-1.5 relative backdrop-blur-sm bg-stone/20">
+              <div className="scroll-wheel w-1 h-2 bg-umber rounded-full" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
