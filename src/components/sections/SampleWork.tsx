@@ -40,14 +40,6 @@ const projects = [
     features: ["Interactive 3D WebGL Models", "Active Aerodynamics Visualization", "Bespoke Maranello Specs"],
   }
 ];
-  {
-    id: "ferrari",
-    name: "LaFerrari Showcase",
-    industry: "Automotive Engineering",
-    tagline: "An interactive 3D engineering and design exploration featuring the definitive hybrid hypercar.",
-    image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2080&auto=format&fit=crop",
-    link: "https://auto-engineering-3d-frk6.vercel.app/",
-    features: ["Interactive 3D WebGL Models", "Active Aerodynamics Visualization", "Bespoke Maranello Specs"],
   }
 ];
 
