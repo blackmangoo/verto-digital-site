@@ -40,8 +40,6 @@ const projects = [
     features: ["Interactive 3D WebGL Models", "Active Aerodynamics Visualization", "Bespoke Maranello Specs"],
   }
 ];
-  }
-];
 
 export default function SampleWork() {
   const ref = useScrollReveal<HTMLElement>();
