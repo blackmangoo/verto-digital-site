@@ -19,7 +19,23 @@ const projects = [
     tagline: "A high-conversion, luxury dental clinic landing page designed to replace clinical anxiety with spa-like trust.",
     image: "/assets/work/lumina.jpg",
     link: "https://dental-clinic-demo-flame.vercel.app",
-    features: ["Frictionless WhatsApp Conversion", "Zero-Jank Editorial Motion", "Trust-Building Architecture"],
+  {
+    id: "rolex",
+    name: "Calibre 3235 Interactive",
+    industry: "Luxury Horology",
+    tagline: "An immersive, interactive deconstruction of the Calibre 3235. Experience precision engineering through continuous scroll.",
+    image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=2080&auto=format&fit=crop",
+    link: "https://rolex-calibre-horology.vercel.app/",
+    features: ["Interactive 3D Deconstruction", "Luxury Typography & UI", "Continuous Scroll UX"],
+  },
+  {
+    id: "ferrari",
+    name: "LaFerrari Showcase",
+    industry: "Automotive Engineering",
+    tagline: "An interactive 3D engineering and design exploration featuring the definitive hybrid hypercar.",
+    image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2080&auto=format&fit=crop",
+    link: "https://auto-engineering-3d-frk6.vercel.app/",
+    features: ["Interactive 3D WebGL Models", "Active Aerodynamics Visualization", "Bespoke Maranello Specs"],
   }
 ];
 
